@@ -1,0 +1,43 @@
+{
+  "name": "grunt-docker",
+  "description": "Grunt Docker plugin.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Prevole/grunt-docker",
+  "author": {
+    "name": "Laurent Prevost",
+    "email": "prevole@prevole.ch",
+    "url": "http://"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Prevole/grunt-docker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Prevole/grunt-docker/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Prevole/grunt-docker/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "grunt": "~0.3.9",
+    "docker": "~0.2.2",
+		"underscore": "1.4.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.9",
+    "docker": "~0.2.2",
+		"underscore": "1.4.2"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
