@@ -27,25 +27,25 @@ Then modify your `grunt.js` file by adding the following line:
 Then add some configuration for the plugin like so:
 
     grunt.initConfig({
-        ...
-        docker: {
-          app: {
-            src: ['path/to/source/files/*.(coffee|js|...)'],
-            dest: 'where/you/want/your/generated/doc/files',
-            options: {
-					    onlyUpdated: false,
-    					colourScheme: 'default',
-    					ignoreHidden: false,
-    					sidebarState: true,
-    					exclude: false,
-    					lineNums: false,
-    					js: [],
-    					css: [],
-    					extras: []
-            }
+      ...
+      docker: {
+        app: {
+          src: ['path/to/source/files/*.(coffee|js|...)'],
+          dest: 'where/you/want/your/generated/doc/files',
+          options: {
+            onlyUpdated: false,
+            colourScheme: 'default',
+            ignoreHidden: false,
+            sidebarState: true,
+            exclude: false,
+            lineNums: false,
+            js: [],
+            css: [],
+            extras: []
           }
-        },
-        ...
+        }
+      },
+      ...
     });
 
 Then just run `grunt docker` and enjoy!
