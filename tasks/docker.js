@@ -4,9 +4,8 @@
 // Copyright (c) 2012 Prevole
 // Licensed under the MIT license.
 module.exports = function(grunt) {
+  "use strict";
   var Docker = require('docker');
-  var _ = require('underscore');
-  var path = require('path');
 
   grunt.registerMultiTask('docker', 'Docker processor.', function() {
     var options;
@@ -34,7 +33,7 @@ module.exports = function(grunt) {
     var done = this.async();
 
     // Generate the documentation
-    if (src == undefined) {
+    if (src === undefined) {
         docker.doc();
     }
     else {

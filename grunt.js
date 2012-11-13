@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         lint:{
-            files:['tasks/**/*.js', 'test/**/*.js']
+            files:['tasks/**/*.js']
         },
 
         clean: {
@@ -27,7 +27,7 @@ module.exports = function (grunt) {
         },
 
         test:{
-            test: ["*_test.js"]
+            test: ["test/*_test.js"]
         },
 
         jshint:{
