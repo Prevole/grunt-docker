@@ -28,7 +28,7 @@ Then add some configuration for the plugin like so:
 
     grunt.initConfig({
         ...
-        coffee: {
+        docker: {
           app: {
             src: ['path/to/source/files/*.(coffee|js|...)'],
             dest: 'where/you/want/your/generated/doc/files',
@@ -48,7 +48,7 @@ Then add some configuration for the plugin like so:
         ...
     });
 
-Then just run `grunt coffee` and enjoy!
+Then just run `grunt docker` and enjoy!
 
 By default, Grunt Docker will use `src = "."` and `dest = "doc"` if they are not
 provided. `dest` will be given to Docker through the `options.outDir` option and
