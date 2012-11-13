@@ -4,9 +4,8 @@
   "version": "0.0.1",
   "homepage": "https://github.com/Prevole/grunt-docker",
   "author": {
-    "name": "Laurent Prevost",
-    "email": "prevole@prevole.ch",
-    "url": "http://"
+    "name": "Prevole",
+    "email": "prevole@prevole.ch"
   },
   "repository": {
     "type": "git",
