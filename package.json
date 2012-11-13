@@ -29,13 +29,12 @@
   },
   "dependencies": {
     "grunt": "~0.3.9",
-    "docker": "~0.2.2",
-		"underscore": "1.4.2"
+    "docker": "~0.2.2"
   },
   "devDependencies": {
     "grunt": "~0.3.9",
     "docker": "~0.2.2",
-		"underscore": "1.4.2"
+		"rimraf": "~2.0.2"
   },
   "keywords": [
     "gruntplugin"
