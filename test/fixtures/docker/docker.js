@@ -3,5 +3,5 @@
  */
 function amazing() {
     // Open an alert with the Amazing !!! text
-    alert("Amazing !!!")
+    window.alert("Amazing !!!");
 }

@@ -1,9 +1,14 @@
 module.exports = function (grunt) {
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     // Project configuration.
     grunt.initConfig({
         lint:{
             files:['tasks/**/*.js', 'test/**/*.js']
+        },
+
+        clean: {
+            test: ["test/docs"]
         },
 
         docker:{
@@ -14,7 +19,15 @@ module.exports = function (grunt) {
                     colourScheme: "friendly"
                 },
                 src: ["tasks/*.js"]
+            },
+            test: {
+                src:['test/fixtures/docker/*.js'],
+                dest:"test/docs"
             }
+        },
+
+        test:{
+            test: ["*_test.js"]
         },
 
         jshint:{
@@ -41,4 +54,5 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', 'lint docker');
+    grunt.registerTask('docker-test', 'docker:test test:test clean:test');
 };
