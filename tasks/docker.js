@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     var options;
 
     // Retrieve the configuration options according to the Docker documentation
-    options = grunt.config(['docker', this.target, 'options']);
+    options = grunt.config(['docker', this.target, 'options']) || {};
     grunt.verbose.writeflags(options, 'Options');
 
     // Getting the source directory or file
