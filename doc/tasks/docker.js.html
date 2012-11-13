@@ -45,12 +45,12 @@
 <p>Copyright (c) 2012 Prevole
 Licensed under the MIT license.</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-6" id="line-6">6</a>  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-7" id="line-7">7</a>    <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-<a class="line-num" href="#line-8" id="line-8">8</a>    <span class="kd">var</span> <span class="nx">Docker</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">);</span>
+        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-6" id="line-6">6</a>  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+<a class="line-num" href="#line-7" id="line-7">7</a>      <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<a class="line-num" href="#line-8" id="line-8">8</a>      <span class="kd">var</span> <span class="nx">Docker</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">);</span>
 <a class="line-num" href="#line-9" id="line-9">9</a>  
-<a class="line-num" href="#line-10" id="line-10">10</a>    <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerMultiTask</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="s1">&#39;Docker processor.&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-<a class="line-num" href="#line-11" id="line-11">11</a>      <span class="kd">var</span> <span class="nx">options</span><span class="p">;</span></pre></div>
+<a class="line-num" href="#line-10" id="line-10">10</a>      <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerMultiTask</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="s1">&#39;Docker processor.&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<a class="line-num" href="#line-11" id="line-11">11</a>          <span class="kd">var</span> <span class="nx">options</span><span class="p">;</span></pre></div>
         </td>
       </tr>
       <tr>
@@ -60,8 +60,8 @@ Licensed under the MIT license.</p>
 </div>
 <p>Retrieve the configuration options according to the Docker documentation</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-14" id="line-14">14</a>      <span class="nx">options</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="s1">&#39;options&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="p">{};</span>
-<a class="line-num" href="#line-15" id="line-15">15</a>      <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="s1">&#39;Options&#39;</span><span class="p">);</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-14" id="line-14">14</a>          <span class="nx">options</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="s1">&#39;options&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="p">{};</span>
+<a class="line-num" href="#line-15" id="line-15">15</a>          <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="s1">&#39;Options&#39;</span><span class="p">);</span></pre></div>
         </td>
       </tr>
       <tr>
@@ -71,11 +71,11 @@ Licensed under the MIT license.</p>
 </div>
 <p>Getting the source directory or file</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-18" id="line-18">18</a>      <span class="kd">var</span> <span class="nx">src</span><span class="p">;</span>
-<a class="line-num" href="#line-19" id="line-19">19</a>      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">src</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-20" id="line-20">20</a>          <span class="nx">src</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">expandFiles</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">src</span><span class="p">);</span>
-<a class="line-num" href="#line-21" id="line-21">21</a>          <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="s1">&#39;Source&#39;</span><span class="p">);</span>
-<a class="line-num" href="#line-22" id="line-22">22</a>      <span class="p">}</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-18" id="line-18">18</a>          <span class="kd">var</span> <span class="nx">src</span><span class="p">;</span>
+<a class="line-num" href="#line-19" id="line-19">19</a>          <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">src</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+<a class="line-num" href="#line-20" id="line-20">20</a>              <span class="nx">src</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">expandFiles</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">src</span><span class="p">);</span>
+<a class="line-num" href="#line-21" id="line-21">21</a>              <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">(</span><span class="nx">src</span><span class="p">,</span> <span class="s1">&#39;Source&#39;</span><span class="p">);</span>
+<a class="line-num" href="#line-22" id="line-22">22</a>          <span class="p">}</span></pre></div>
         </td>
       </tr>
       <tr>
@@ -85,10 +85,12 @@ Licensed under the MIT license.</p>
 </div>
 <p>Getting the destination directory or file</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-25" id="line-25">25</a>      <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">dest</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-26" id="line-26">26</a>          <span class="nx">options</span><span class="p">.</span><span class="nx">outDir</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">dest</span><span class="p">;</span>
-<a class="line-num" href="#line-27" id="line-27">27</a>          <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">([</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">dest</span><span class="p">],</span> <span class="s1">&#39;Destination&#39;</span><span class="p">);</span>
-<a class="line-num" href="#line-28" id="line-28">28</a>      <span class="p">}</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-25" id="line-25">25</a>          <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">dest</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+<a class="line-num" href="#line-26" id="line-26">26</a>              <span class="nx">options</span><span class="p">.</span><span class="nx">outDir</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">dest</span><span class="p">;</span>
+<a class="line-num" href="#line-27" id="line-27">27</a>              <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">([</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">dest</span><span class="p">],</span> <span class="s1">&#39;Destination&#39;</span><span class="p">);</span>
+<a class="line-num" href="#line-28" id="line-28">28</a>          <span class="p">}</span>
+<a class="line-num" href="#line-29" id="line-29">29</a>  
+<a class="line-num" href="#line-30" id="line-30">30</a>          <span class="kd">var</span> <span class="nx">done</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">async</span><span class="p">();</span></pre></div>
         </td>
       </tr>
       <tr>
@@ -96,11 +98,13 @@ Licensed under the MIT license.</p>
 <div class="pilwrap">
   <a class="pilcrow" href="#section-5" id="section-5">&#182;</a>
 </div>
-<p>Create the Docker instance</p>
+<p>Hack docker to call the done callback when the documentation generation is finished</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-31" id="line-31">31</a>      <span class="kd">var</span> <span class="nx">docker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Docker</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
-<a class="line-num" href="#line-32" id="line-32">32</a>  
-<a class="line-num" href="#line-33" id="line-33">33</a>      <span class="kd">var</span> <span class="nx">done</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">async</span><span class="p">();</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-33" id="line-33">33</a>          <span class="kd">var</span> <span class="nx">dockerFinished</span> <span class="o">=</span> <span class="nx">Docker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">finished</span><span class="p">;</span>
+<a class="line-num" href="#line-34" id="line-34">34</a>          <span class="nx">Docker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">finished</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<a class="line-num" href="#line-35" id="line-35">35</a>              <span class="nx">dockerFinished</span><span class="p">();</span>
+<a class="line-num" href="#line-36" id="line-36">36</a>              <span class="nx">done</span><span class="p">();</span>
+<a class="line-num" href="#line-37" id="line-37">37</a>          <span class="p">};</span></pre></div>
         </td>
       </tr>
       <tr>
@@ -108,17 +112,27 @@ Licensed under the MIT license.</p>
 <div class="pilwrap">
   <a class="pilcrow" href="#section-6" id="section-6">&#182;</a>
 </div>
+<p>Create the Docker instance</p>
+        </td>
+        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-40" id="line-40">40</a>          <span class="kd">var</span> <span class="nx">docker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Docker</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span></pre></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="docs">
+<div class="pilwrap">
+  <a class="pilcrow" href="#section-7" id="section-7">&#182;</a>
+</div>
 <p>Generate the documentation</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-36" id="line-36">36</a>      <span class="k">if</span> <span class="p">(</span><span class="nx">src</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-37" id="line-37">37</a>          <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">();</span>
-<a class="line-num" href="#line-38" id="line-38">38</a>      <span class="p">}</span>
-<a class="line-num" href="#line-39" id="line-39">39</a>      <span class="k">else</span> <span class="p">{</span>
-<a class="line-num" href="#line-40" id="line-40">40</a>          <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">(</span><span class="nx">src</span><span class="p">);</span>
-<a class="line-num" href="#line-41" id="line-41">41</a>      <span class="p">}</span>
-<a class="line-num" href="#line-42" id="line-42">42</a>    <span class="p">});</span>
-<a class="line-num" href="#line-43" id="line-43">43</a>  <span class="p">};</span>
-<a class="line-num" href="#line-44" id="line-44">44</a>  </pre></div>
+        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-43" id="line-43">43</a>          <span class="k">if</span> <span class="p">(</span><span class="nx">src</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+<a class="line-num" href="#line-44" id="line-44">44</a>              <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">();</span>
+<a class="line-num" href="#line-45" id="line-45">45</a>          <span class="p">}</span>
+<a class="line-num" href="#line-46" id="line-46">46</a>          <span class="k">else</span> <span class="p">{</span>
+<a class="line-num" href="#line-47" id="line-47">47</a>              <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">(</span><span class="nx">src</span><span class="p">);</span>
+<a class="line-num" href="#line-48" id="line-48">48</a>          <span class="p">}</span>
+<a class="line-num" href="#line-49" id="line-49">49</a>      <span class="p">});</span>
+<a class="line-num" href="#line-50" id="line-50">50</a>  <span class="p">};</span>
+<a class="line-num" href="#line-51" id="line-51">51</a>  </pre></div>
         </td>
       </tr>
   </tbody>
