@@ -22,31 +22,35 @@ You'll need to install `grunt-docker` first:
 
 Then modify your `grunt.js` file by adding the following line:
 
-    grunt.loadNpmTasks('grunt-docker');
+```javascript
+grunt.loadNpmTasks('grunt-docker');
+```
 
 Then add some configuration for the plugin like so:
 
-    grunt.initConfig({
-      ...
-      docker: {
-        app: {
-          src: ['path/to/source/files/*.(coffee|js|...)'],
-          dest: 'where/you/want/your/generated/doc/files',
-          options: {
-            onlyUpdated: false,
-            colourScheme: 'default',
-            ignoreHidden: false,
-            sidebarState: true,
-            exclude: false,
-            lineNums: false,
-            js: [],
-            css: [],
-            extras: []
-          }
-        }
-      },
-      ...
-    });
+```javascript
+grunt.initConfig({
+  ...
+  docker: {
+    app: {
+      src: ['path/to/source/files/*.(coffee|js|...)'],
+      dest: 'where/you/want/your/generated/doc/files',
+      options: {
+        onlyUpdated: false,
+        colourScheme: 'default',
+        ignoreHidden: false,
+        sidebarState: true,
+        exclude: false,
+        lineNums: false,
+        js: [],
+        css: [],
+        extras: []
+      }
+    }
+  },
+  ...
+});
+```
 
 Then just run `grunt docker` and enjoy!
 
@@ -56,8 +60,6 @@ provided. `dest` will be given to Docker through the `options.outDir` option and
 
 The options provided there are the defaults configured in [Docker](https://github.com/jbt/docker) and
 corresponds to the command line arguments that are possible to use.
-
-
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
