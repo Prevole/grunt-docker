@@ -1,5 +1,4 @@
 var grunt = require("grunt");
-var rr =require("rimraf");
 
 exports.docker = {
   main: function(test) {
@@ -16,7 +15,5 @@ exports.docker = {
      test.equal(fileList.length, 75, "Should create doc-filelist.js");
      test.equal(fileScript.length, 7461, "Should create doc-script.js");
      test.done();
-
-     rr('docs', function(){});
   }
 };

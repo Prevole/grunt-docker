@@ -1,35 +1,22 @@
 module.exports = function (grunt) {
 
-// Project configuration.
+    // Project configuration.
     grunt.initConfig({
-        test:{
-            files:['test/**/*.js']
-        },
         lint:{
             files:['tasks/**/*.js', 'test/**/*.js']
         },
-        watch:{
-            files:'<config:lint.files>',
-            tasks:'default'
-        },
-        clean:{
-            app:{
-                src:["docs"]
-            }
-        },
+
         docker:{
             app:{
                 options: {
                     extras: ["fileSearch", "goToLine"],
                     lineNums: true,
                     colourScheme: "friendly"
-                }
-                ,
+                },
                 src: ["tasks/*.js"]
-//                ,
-//                dest: "docs"
             }
         },
+
         jshint:{
             options:{
                 curly:true,

@@ -1,24 +1,25 @@
-module.exports = function(grunt) {
-  grunt.initConfig({
-    pkg: {
-      name: "grunt-contrib",
-      version: "0.3.9"
-    },
+module.exports = function (grunt) {
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    test: {
-      tasks: ["*_test.js"]
-//        ,
-//      clean: ['clean_task.js']
-    },
+    grunt.initConfig({
+        clean: {
+            app: {
+                src: ["docs"]
+            }
+        },
 
-    docker: {
-      app: {
-        src: ['fixtures/docker/*.js'],
-        dest: "docs"
-      }
-    }
-  });
+        test:{
+            app: ["*_test.js"]
+        },
 
-  grunt.loadTasks("../tasks");
-  grunt.registerTask("default", "docker test:tasks");
+        docker:{
+            app:{
+                src:['fixtures/docker/*.js'],
+                dest:"docs"
+            }
+        }
+    });
+
+    grunt.loadTasks("../tasks");
+    grunt.registerTask("default", "docker test clean");
 };
