@@ -24,7 +24,7 @@
     "node": "*"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt docker-test"
   },
   "dependencies": {
     "grunt": "~0.3.9",
