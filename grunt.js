@@ -8,7 +8,9 @@ module.exports = function (grunt) {
         },
 
         clean: {
-            test: ["test/docs"]
+            test: {
+                src: ["test/docs"]
+            }
         },
 
         docker:{
