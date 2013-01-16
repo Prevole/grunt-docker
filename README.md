@@ -66,6 +66,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### 0.0.3
+- Fixed dev dependency version for contrib-clean (0.3.0)
+
 ### 0.0.2
 - Updated the docker version to 0.2.3
 
