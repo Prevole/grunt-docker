@@ -66,7 +66,11 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-0.0.1 - Initial project creation that is working at least for my setup
+### 0.0.2
+- Updated the docker version to 0.2.3
+
+### 0.0.1
+- Initial project creation that is working at least for my setup
 
 ## License
 Copyright (c) 2012 Prevole
