@@ -55,10 +55,4 @@ module.exports = function (grunt) {
     // Default task.
     grunt.registerTask('default', 'lint docker:app');
     grunt.registerTask('docker-test', 'docker:test test:test clean:test');
-//    , function() {
-//        grunt.task.run('docker:test');
-//        grunt.task.run('test:test');
-//        grunt.task.run('clean:test');
-//    });
-//        'docker:test test:test clean:test');
 };

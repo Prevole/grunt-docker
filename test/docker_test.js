@@ -10,7 +10,7 @@ exports.docker = {
      var fileScript = grunt.file.read("test/docs/doc-script.js");
 
      test.expect(4);
-     test.equal(css.length, 10859, "Should create CSS.");
+     test.equal(css.length, 10856, "Should create CSS.");
      test.equal(html.length, 1986, "Should create HTML.");
      test.equal(fileList.length, 93, "Should create doc-filelist.js");
      test.equal(fileScript.length, 7461, "Should create doc-script.js");
