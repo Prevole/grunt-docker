@@ -3,10 +3,6 @@ module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        lint:{
-            files:['tasks/**/*.js']
-        },
-
         clean: {
             test: {
                 src: ["test/docs"]
@@ -28,11 +24,12 @@ module.exports = function (grunt) {
             }
         },
 
-        test:{
+        nodeunit:{
             test: ["test/*_test.js"]
         },
 
         jshint:{
+            files:['tasks/**/*.js'],
             options:{
                 curly:true,
                 eqeqeq:true,
@@ -53,8 +50,11 @@ module.exports = function (grunt) {
 
     // Load local tasks.
     grunt.loadTasks('tasks');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
     // Default task.
-    grunt.registerTask('default', 'lint docker:app');
-    grunt.registerTask('docker-test', 'docker:test test:test clean:test');
+    grunt.registerTask('default', 'jshint docker:app'.split( " " ));
+    grunt.registerTask('docker-test', 'docker:test nodeunit:test clean:test'.split( " " ));
 };
