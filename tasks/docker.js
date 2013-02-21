@@ -15,16 +15,18 @@ module.exports = function (grunt) {
         grunt.verbose.writeflags(options, 'Options');
 
         // Getting the source directory or file
-        var src;
-        if (this.file.src !== undefined) {
-            src = grunt.file.expandFiles(this.file.src);
-            grunt.verbose.writeflags(src, 'Source');
-        }
+        var src = [];
+        this.files.forEach(function(f) {
+            for( var i = 0; i < f.src.length; i++ ){
+                src.push( f.src[ i ] );
+            }
+            grunt.verbose.writeflags([f.dest], 'Destination');
+        });
 
         // Getting the destination directory or file
-        if (this.file.dest !== undefined) {
-            options.outDir = this.file.dest;
-            grunt.verbose.writeflags([this.file.dest], 'Destination');
+        var _dest = grunt.config(['docker', this.target, 'dest']);
+        if (_dest !== undefined) {
+            options.outDir = _dest;   
         }
 
         var done = this.async();

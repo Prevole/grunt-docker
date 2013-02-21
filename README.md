@@ -33,6 +33,7 @@ grunt.initConfig({
   ...
   docker: {
     app: {
+      expand: true,
       src: ['path/to/source/files/*.(coffee|js|...)'],
       dest: 'where/you/want/your/generated/doc/files',
       options: {
@@ -65,6 +66,9 @@ corresponds to the command line arguments that are possible to use.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+
+### 0.0.4
+- Upgrade plugin to grunt 0.4.x
 
 ### 0.0.3
 - Fixed dev dependency version for contrib-clean (0.3.0)
