@@ -13,7 +13,6 @@ module.exports = function (grunt) {
             app:{
                 options: {
                     extras: ["fileSearch", "goToLine"],
-                    lineNums: true,
                     colourScheme: "friendly"
                 },
                 src: ["tasks/*.js"]

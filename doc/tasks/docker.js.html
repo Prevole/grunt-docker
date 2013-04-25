@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="all" href="../doc-style.css" />
   <script src="../doc-filelist.js"></script>
   <script>
-    var relativeDir = '../', thisFile = 'tasks/docker.js', defaultSidebar = true;
+    var relativeDir = "../", thisFile = "tasks/docker.js", defaultSidebar = true;
   </script>
   <script src="../doc-script.js"></script>
   <script src="../fileSearch.js"></script>
@@ -45,12 +45,15 @@
 <p>Copyright (c) 2012 Prevole
 Licensed under the MIT license.</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-6" id="line-6">6</a>  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-7" id="line-7">7</a>      <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
-<a class="line-num" href="#line-8" id="line-8">8</a>      <span class="kd">var</span> <span class="nx">Docker</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">);</span>
-<a class="line-num" href="#line-9" id="line-9">9</a>  
-<a class="line-num" href="#line-10" id="line-10">10</a>      <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerMultiTask</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="s1">&#39;Docker processor.&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<a class="line-num" href="#line-11" id="line-11">11</a>          <span class="kd">var</span> <span class="nx">options</span><span class="p">;</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">Docker</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">);</span>
+
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerMultiTask</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="s1">&#39;Docker processor.&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">options</span><span class="p">;</span>
+
+
+</pre></div>
         </td>
       </tr>
       <tr>
@@ -60,8 +63,12 @@ Licensed under the MIT license.</p>
 </div>
 <p>Retrieve the configuration options according to the Docker documentation</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-14" id="line-14">14</a>          <span class="nx">options</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="s1">&#39;options&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="p">{};</span>
-<a class="line-num" href="#line-15" id="line-15">15</a>          <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="s1">&#39;Options&#39;</span><span class="p">);</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre>
+        <span class="nx">options</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="s1">&#39;options&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="p">{};</span>
+        <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="s1">&#39;Options&#39;</span><span class="p">);</span>
+
+
+</pre></div>
         </td>
       </tr>
       <tr>
@@ -71,13 +78,17 @@ Licensed under the MIT license.</p>
 </div>
 <p>Getting the source directory or file</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-18" id="line-18">18</a>          <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="p">[];</span>
-<a class="line-num" href="#line-19" id="line-19">19</a>          <span class="k">this</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-20" id="line-20">20</a>              <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">src</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
-<a class="line-num" href="#line-21" id="line-21">21</a>                  <span class="nx">src</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">f</span><span class="p">.</span><span class="nx">src</span><span class="p">[</span> <span class="nx">i</span> <span class="p">]</span> <span class="p">);</span>
-<a class="line-num" href="#line-22" id="line-22">22</a>              <span class="p">}</span>
-<a class="line-num" href="#line-23" id="line-23">23</a>              <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">([</span><span class="nx">f</span><span class="p">.</span><span class="nx">dest</span><span class="p">],</span> <span class="s1">&#39;Destination&#39;</span><span class="p">);</span>
-<a class="line-num" href="#line-24" id="line-24">24</a>          <span class="p">});</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre>
+        <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">src</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
+                <span class="nx">src</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">f</span><span class="p">.</span><span class="nx">src</span><span class="p">[</span> <span class="nx">i</span> <span class="p">]</span> <span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">([</span><span class="nx">f</span><span class="p">.</span><span class="nx">dest</span><span class="p">],</span> <span class="s1">&#39;Destination&#39;</span><span class="p">);</span>
+        <span class="p">});</span>
+
+
+</pre></div>
         </td>
       </tr>
       <tr>
@@ -87,12 +98,16 @@ Licensed under the MIT license.</p>
 </div>
 <p>Getting the destination directory or file</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-27" id="line-27">27</a>          <span class="kd">var</span> <span class="nx">_dest</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="s1">&#39;dest&#39;</span><span class="p">]);</span>
-<a class="line-num" href="#line-28" id="line-28">28</a>          <span class="k">if</span> <span class="p">(</span><span class="nx">_dest</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-29" id="line-29">29</a>              <span class="nx">options</span><span class="p">.</span><span class="nx">outDir</span> <span class="o">=</span> <span class="nx">_dest</span><span class="p">;</span>   
-<a class="line-num" href="#line-30" id="line-30">30</a>          <span class="p">}</span>
-<a class="line-num" href="#line-31" id="line-31">31</a>  
-<a class="line-num" href="#line-32" id="line-32">32</a>          <span class="kd">var</span> <span class="nx">done</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">async</span><span class="p">();</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre>
+        <span class="kd">var</span> <span class="nx">_dest</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="s1">&#39;dest&#39;</span><span class="p">]);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">_dest</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">options</span><span class="p">.</span><span class="nx">outDir</span> <span class="o">=</span> <span class="nx">_dest</span><span class="p">;</span>   
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">done</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">async</span><span class="p">();</span>
+
+
+</pre></div>
         </td>
       </tr>
       <tr>
@@ -102,11 +117,15 @@ Licensed under the MIT license.</p>
 </div>
 <p>Hack docker to call the done callback when the documentation generation is finished</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-35" id="line-35">35</a>          <span class="kd">var</span> <span class="nx">dockerFinished</span> <span class="o">=</span> <span class="nx">Docker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">finished</span><span class="p">;</span>
-<a class="line-num" href="#line-36" id="line-36">36</a>          <span class="nx">Docker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">finished</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<a class="line-num" href="#line-37" id="line-37">37</a>              <span class="nx">dockerFinished</span><span class="p">();</span>
-<a class="line-num" href="#line-38" id="line-38">38</a>              <span class="nx">done</span><span class="p">();</span>
-<a class="line-num" href="#line-39" id="line-39">39</a>          <span class="p">};</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre>
+        <span class="kd">var</span> <span class="nx">dockerFinished</span> <span class="o">=</span> <span class="nx">Docker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">finished</span><span class="p">;</span>
+        <span class="nx">Docker</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">finished</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">dockerFinished</span><span class="p">();</span>
+            <span class="nx">done</span><span class="p">();</span>
+        <span class="p">};</span>
+
+
+</pre></div>
         </td>
       </tr>
       <tr>
@@ -116,7 +135,11 @@ Licensed under the MIT license.</p>
 </div>
 <p>Create the Docker instance</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-42" id="line-42">42</a>          <span class="kd">var</span> <span class="nx">docker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Docker</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span></pre></div>
+        <td class="code highlight"><div class="highlight"><pre>
+        <span class="kd">var</span> <span class="nx">docker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Docker</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
+
+
+</pre></div>
         </td>
       </tr>
       <tr>
@@ -126,15 +149,16 @@ Licensed under the MIT license.</p>
 </div>
 <p>Generate the documentation</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-45" id="line-45">45</a>          <span class="k">if</span> <span class="p">(</span><span class="nx">src</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-<a class="line-num" href="#line-46" id="line-46">46</a>              <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">();</span>
-<a class="line-num" href="#line-47" id="line-47">47</a>          <span class="p">}</span>
-<a class="line-num" href="#line-48" id="line-48">48</a>          <span class="k">else</span> <span class="p">{</span>
-<a class="line-num" href="#line-49" id="line-49">49</a>              <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">(</span><span class="nx">src</span><span class="p">);</span>
-<a class="line-num" href="#line-50" id="line-50">50</a>          <span class="p">}</span>
-<a class="line-num" href="#line-51" id="line-51">51</a>      <span class="p">});</span>
-<a class="line-num" href="#line-52" id="line-52">52</a>  <span class="p">};</span>
-<a class="line-num" href="#line-53" id="line-53">53</a>  </pre></div>
+        <td class="code highlight"><div class="highlight"><pre>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">src</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">(</span><span class="nx">src</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</pre></div>
         </td>
       </tr>
   </tbody>
