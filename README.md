@@ -67,6 +67,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### 0.0.6
+- Bumped version of Docker to 0.2.10
+
 ### 0.0.5
 - Bumped version of Docker to 0.2.8
 
