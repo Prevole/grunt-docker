@@ -18,7 +18,7 @@ grunt.loadNpmTasks('grunt-docker');
 ## Documentation
 You'll need to install `grunt-docker` first:
 
-    npm install grunt-docker
+    npm install grunt-docker --save-dev
 
 Then modify your `grunt.js` file by adding the following line:
 
