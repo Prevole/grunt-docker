@@ -78,12 +78,12 @@ If you need to output to more than one directory, define a new task; unfortunate
 Docker object is allocated per-task and can only be used for a single output folder.
 
 Grunt-Docker will figure out the correct `outDir` property by reading Grunt's interpretation of
-`files.dest`. In most cases, this works fine. If you are having issues with relative paths, use 
+`files.dest`. In most cases, this works fine. If you are having issues with relative paths, use
 `options.outDir`, instead of `files.dest`.
 
-If your source files are above the current working directory (starting with `../), you *must* change
+If your source files are above the current working directory (starting with `../`), you *must* change
 `options.inDir`, or your docs will end up in the same folder as the source folders. For example, if
-my `src` property were `../../src/**/*.js`, I would set `options.inDir` to `'../../'.
+my `src` property were `../../src/**/*.js`, I would set `options.inDir` to `../../`.
 
 By default, Grunt-Docker will use `files.src = "."` and `options.outDir = "doc"` if they are not
 provided. `src` is used in the call to the doc generation as an `Array`.
@@ -92,6 +92,9 @@ provided. `src` is used in the call to the doc generation as an `Array`.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
 
 ## Release History
+
+### 0.0.7
+- Rework options parsing to use grunt's built-in options parsing and fix `outDir` location. ([https://github.com/Prevole/grunt-docker/pull/4](#4), [https://github.com/ssafejava](@ssafejava))
 
 ### 0.0.6
 - Bumped version of Docker to 0.2.10
