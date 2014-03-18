@@ -37,7 +37,7 @@ grunt.initConfig({
     },
     app: {
       // Specify `src` and `dest` directly on the task object
-      src: ['path/to/source/files/*.(coffee|js|...)'],
+      src: ['path/to/source/files/*.{coffee,js}'],
       dest: 'where/you/want/your/generated/doc/files',
       options: {
         // ...
