@@ -94,7 +94,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 
 ### 0.0.7
-- Rework options parsing to use grunt's built-in options parsing and fix `outDir` location. ([https://github.com/Prevole/grunt-docker/pull/4](#4), [https://github.com/ssafejava](@ssafejava))
+- Rework options parsing to use grunt's built-in options parsing and fix `outDir` location. ([#4](https://github.com/Prevole/grunt-docker/pull/4), [@ssafejava](https://github.com/ssafejava))
 
 ### 0.0.6
 - Bumped version of Docker to 0.2.10
