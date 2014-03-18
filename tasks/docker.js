@@ -30,11 +30,13 @@ module.exports = function (grunt) {
             for( var i = 0; i < f.src.length; i++ ){
                 src.push( f.src[ i ] );
             }
+            // Attempt to automatically set the outDir if a 'dest' param is used.
+            // It's recommended to just use the 'outDir' option directly.
+            if (!options.outDir && f.dest){
+                options.outDir = f.dest.replace(f.src, '');
+            }
             grunt.verbose.writeflags([f.dest], 'Destination');
         });
-
-        // Getting the destination directory or file
-        options.outDir = path.resolve(options.dest);
 
         var done = this.async();
 

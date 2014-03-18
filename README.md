@@ -32,20 +32,15 @@ Then add some configuration for the plugin like so:
 grunt.initConfig({
   ...
   docker: {
+    options: {
+      // These options are applied to all tasks
+    },
     app: {
-      expand: true,
+      // Specify `src` and `dest` directly on the task object
       src: ['path/to/source/files/*.(coffee|js|...)'],
       dest: 'where/you/want/your/generated/doc/files',
       options: {
-        onlyUpdated: false,
-        colourScheme: 'default',
-        ignoreHidden: false,
-        sidebarState: true,
-        exclude: false,
-        lineNums: false,
-        js: [],
-        css: [],
-        extras: []
+        // ...
       }
     }
   },
@@ -53,14 +48,40 @@ grunt.initConfig({
 });
 ```
 
+The default options are:
+
+```javascript
+options: {
+  outDir: 'doc',
+  onlyUpdated: false,
+  colourScheme: 'default',
+  ignoreHidden: false,
+  sidebarState: true,
+  exclude: false,
+  lineNums: false,
+  js: [],
+  css: [],
+  extras: []
+}
+```
+
+The options provided above are the defaults configured in [Docker](https://github.com/jbt/docker) and
+correspond to its CLI.
+
 Then just run `grunt docker` and enjoy!
 
-By default, Grunt Docker will use `src = "."` and `dest = "doc"` if they are not
-provided. `dest` will be given to Docker through the `options.outDir` option and
-`src` is used in the call to the doc generation as an `Array`.
+## Notes on output directory
 
-The options provided there are the defaults configured in [Docker](https://github.com/jbt/docker) and
-corresponds to the command line arguments that are possible to use.
+Docker itself doesn't quite follow Grunt convention, choosing to instead specify an `outDir`.
+If you need to output to more than one directory, define a new task; unfortunately, a single
+Docker object is allocated per-task and can only be used for a single output folder.
+
+Grunt-Docker will figure out the correct `outDir` property by reading Grunt's interpretation of
+`files.dest`. In most cases, this works fine. If you are having issues with relative paths, use 
+`options.outDir`, instead of `files.dest`.
+
+By default, Grunt Docker will use `files.src = "."` and `options.outDir = "doc"` if they are not
+provided. `src` is used in the call to the doc generation as an `Array`.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][grunt].
