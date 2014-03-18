@@ -6,28 +6,37 @@
 module.exports = function (grunt) {
     "use strict";
     var Docker = require('docker');
+    var path = require('path');
 
     grunt.registerMultiTask('docker', 'Docker processor.', function () {
-        var options;
+        var options = this.options({
+            onlyUpdated: false,
+            colourScheme: 'default',
+            ignoreHidden: false,
+            sidebarState: true,
+            exclude: false,
+            lineNums: false,
+            js: [],
+            css: [],
+            extras: []
+        });
 
         // Retrieve the configuration options according to the Docker documentation
-        options = grunt.config(['docker', this.target, 'options']) || {};
         grunt.verbose.writeflags(options, 'Options');
 
         // Getting the source directory or file
         var src = [];
         this.files.forEach(function(f) {
             for( var i = 0; i < f.src.length; i++ ){
-                src.push( f.src[ i ] );
+                src.push( f.src[ i ].replace(options.inDir, '') );
+            }
+            // Attempt to automatically set the outDir if a 'dest' param is used.
+            // It's recommended to just use the 'outDir' option directly.
+            if (!options.outDir && f.dest){
+                options.outDir = f.dest.replace(f.src, '');
             }
             grunt.verbose.writeflags([f.dest], 'Destination');
         });
-
-        // Getting the destination directory or file
-        var _dest = grunt.config(['docker', this.target, 'dest']);
-        if (_dest !== undefined) {
-            options.outDir = _dest;   
-        }
 
         var done = this.async();
 
@@ -42,11 +51,6 @@ module.exports = function (grunt) {
         var docker = new Docker(options);
 
         // Generate the documentation
-        if (src === undefined) {
-            docker.doc();
-        }
-        else {
-            docker.doc(src);
-        }
+        docker.doc(src);
     });
 };

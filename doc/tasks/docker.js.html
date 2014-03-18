@@ -48,9 +48,20 @@ Licensed under the MIT license.</p>
         <td class="code highlight"><div class="highlight"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
     <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">Docker</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
 
     <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerMultiTask</span><span class="p">(</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="s1">&#39;Docker processor.&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">options</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">({</span>
+            <span class="nx">onlyUpdated</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">colourScheme</span><span class="o">:</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+            <span class="nx">ignoreHidden</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">sidebarState</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">exclude</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">lineNums</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">js</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="nx">css</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="nx">extras</span><span class="o">:</span> <span class="p">[]</span>
+        <span class="p">});</span>
 
 
 </pre></div>
@@ -64,7 +75,6 @@ Licensed under the MIT license.</p>
 <p>Retrieve the configuration options according to the Docker documentation</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-        <span class="nx">options</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="s1">&#39;options&#39;</span><span class="p">])</span> <span class="o">||</span> <span class="p">{};</span>
         <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="s1">&#39;Options&#39;</span><span class="p">);</span>
 
 
@@ -84,9 +94,6 @@ Licensed under the MIT license.</p>
             <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">src</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
                 <span class="nx">src</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">f</span><span class="p">.</span><span class="nx">src</span><span class="p">[</span> <span class="nx">i</span> <span class="p">]</span> <span class="p">);</span>
             <span class="p">}</span>
-            <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">([</span><span class="nx">f</span><span class="p">.</span><span class="nx">dest</span><span class="p">],</span> <span class="s1">&#39;Destination&#39;</span><span class="p">);</span>
-        <span class="p">});</span>
-
 
 </pre></div>
         </td>
@@ -96,13 +103,15 @@ Licensed under the MIT license.</p>
 <div class="pilwrap">
   <a class="pilcrow" href="#section-4" id="section-4">&#182;</a>
 </div>
-<p>Getting the destination directory or file</p>
+<p>Attempt to automatically set the outDir if a 'dest' param is used.
+It's recommended to just use the 'outDir' option directly.</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-        <span class="kd">var</span> <span class="nx">_dest</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">target</span><span class="p">,</span> <span class="s1">&#39;dest&#39;</span><span class="p">]);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">_dest</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">options</span><span class="p">.</span><span class="nx">outDir</span> <span class="o">=</span> <span class="nx">_dest</span><span class="p">;</span>   
-        <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">outDir</span> <span class="o">&amp;&amp;</span> <span class="nx">f</span><span class="p">.</span><span class="nx">dest</span><span class="p">){</span>
+                <span class="nx">options</span><span class="p">.</span><span class="nx">outDir</span> <span class="o">=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">dest</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">src</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="nx">grunt</span><span class="p">.</span><span class="nx">verbose</span><span class="p">.</span><span class="nx">writeflags</span><span class="p">([</span><span class="nx">f</span><span class="p">.</span><span class="nx">dest</span><span class="p">],</span> <span class="s1">&#39;Destination&#39;</span><span class="p">);</span>
+        <span class="p">});</span>
 
         <span class="kd">var</span> <span class="nx">done</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">async</span><span class="p">();</span>
 
@@ -150,12 +159,7 @@ Licensed under the MIT license.</p>
 <p>Generate the documentation</p>
         </td>
         <td class="code highlight"><div class="highlight"><pre>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">src</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">(</span><span class="nx">src</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">docker</span><span class="p">.</span><span class="nx">doc</span><span class="p">(</span><span class="nx">src</span><span class="p">);</span>
     <span class="p">});</span>
 <span class="p">};</span>
 </pre></div>

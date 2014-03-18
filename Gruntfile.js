@@ -10,6 +10,9 @@ module.exports = function (grunt) {
         },
 
         docker:{
+            options: {
+                exclude: '**/excluded.js'
+            },
             app:{
                 options: {
                     extras: ["fileSearch", "goToLine"],
@@ -55,5 +58,5 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', 'jshint docker:app'.split( " " ));
-    grunt.registerTask('docker-test', 'docker:test nodeunit:test clean:test'.split( " " ));
+    grunt.registerTask('docker-test', 'clean:test docker:test nodeunit:test clean:test'.split( " " ));
 };
