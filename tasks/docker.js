@@ -28,7 +28,7 @@ module.exports = function (grunt) {
         var src = [];
         this.files.forEach(function(f) {
             for( var i = 0; i < f.src.length; i++ ){
-                src.push( f.src[ i ] );
+                src.push( f.src[ i ].replace(options.inDir, '') );
             }
             // Attempt to automatically set the outDir if a 'dest' param is used.
             // It's recommended to just use the 'outDir' option directly.

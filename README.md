@@ -52,6 +52,7 @@ The default options are:
 
 ```javascript
 options: {
+  inDir: '.',
   outDir: 'doc',
   onlyUpdated: false,
   colourScheme: 'default',
@@ -80,7 +81,11 @@ Grunt-Docker will figure out the correct `outDir` property by reading Grunt's in
 `files.dest`. In most cases, this works fine. If you are having issues with relative paths, use 
 `options.outDir`, instead of `files.dest`.
 
-By default, Grunt Docker will use `files.src = "."` and `options.outDir = "doc"` if they are not
+If your source files are above the current working directory (starting with `../), you *must* change
+`options.inDir`, or your docs will end up in the same folder as the source folders. For example, if
+my `src` property were `../../src/**/*.js`, I would set `options.inDir` to `'../../'.
+
+By default, Grunt-Docker will use `files.src = "."` and `options.outDir = "doc"` if they are not
 provided. `src` is used in the call to the doc generation as an `Array`.
 
 ## Contributing
