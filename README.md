@@ -93,7 +93,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-### 0.0.7
+### 0.0.7/0.0.8
+- Republished version 0.0.7 under 0.0.8 due to an error at the publish time
 - Rework options parsing to use grunt's built-in options parsing and fix `outDir` location. ([#4](https://github.com/Prevole/grunt-docker/pull/4), [@ssafejava](https://github.com/ssafejava))
 
 ### 0.0.6
