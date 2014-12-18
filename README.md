@@ -60,6 +60,7 @@ options: {
   sidebarState: true,
   exclude: false,
   lineNums: false,
+  multiLineOnly: false,
   js: [],
   css: [],
   extras: []
