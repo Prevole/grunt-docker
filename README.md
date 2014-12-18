@@ -95,7 +95,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 
 ### 0.0.9
-- Documentation added for the multiLineOnly option. See #5 for more details
+- Documentation added for the multiLineOnly option. See [#5](https://github.com/Prevole/grunt-docker/pull/5) for more details
 
 ### 0.0.7/0.0.8
 - Republished version 0.0.7 under 0.0.8 due to an error at the publish time
