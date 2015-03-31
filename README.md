@@ -16,6 +16,8 @@ grunt.loadNpmTasks('grunt-docker');
 [getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
 
 ## Documentation
+Take a look to this [example](http://prevole.github.io/grunt-docker/doc/tasks/docker.js.html) which shows `grunt-docker` in action.
+
 You'll need to install `grunt-docker` first:
 
     npm install grunt-docker --save-dev
