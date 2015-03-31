@@ -57,6 +57,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
     // Default task.
-    grunt.registerTask('default', 'jshint docker:app'.split( " " ));
-    grunt.registerTask('docker-test', 'clean:test docker:test nodeunit:test clean:test'.split( " " ));
+    grunt.registerTask('default', ['jshint', 'docker:app']);
+    grunt.registerTask('docker-test', [ 'clean:test', 'docker:test', 'nodeunit:test', 'clean:test' ]);
 };

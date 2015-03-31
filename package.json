@@ -1,7 +1,7 @@
 {
   "name": "grunt-docker",
   "description": "Grunt Docker plugin.",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "homepage": "https://github.com/Prevole/grunt-docker",
   "author": {
     "name": "Prevole",
@@ -29,14 +29,12 @@
   },
   "dependencies": {
     "grunt": "~0.4.0",
-    "docker": "~0.2.8"
+    "docker": "~0.2.10"
   },
   "devDependencies": {
-    "grunt": "~0.4.0",
     "grunt-contrib-jshint": "~0.1.1",
-		"grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-nodeunit": "~0.1.2",
-    "docker": "~0.2.10"
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.1.2"
   },
   "peerDependencies": {
     "grunt": "~0.4.0"

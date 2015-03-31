@@ -15,7 +15,7 @@ exports.docker = {
      test.equal(html.length, 1989, "Should create HTML.");
      test.equal(excludedFileExists, false, "Should exclude excluded file (set in general options)");
      test.equal(fileList.length, 93, "Should create doc-filelist.js");
-     test.equal(fileScript.length, 7461, "Should create doc-script.js");
+     test.equal(fileScript.length, 7616, "Should create doc-script.js");
      test.done();
   }
 };
