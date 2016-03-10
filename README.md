@@ -1,7 +1,9 @@
-[![build status](https://secure.travis-ci.org/Prevole/grunt-docker.png)](http://travis-ci.org/Prevole/grunt-docker)
 # grunt-docker
 
 Generate your Docker documentation
+
+[![build status](https://secure.travis-ci.org/Prevole/grunt-docker.png)](http://travis-ci.org/Prevole/grunt-docker)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
 
 ## Getting Started
 Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-docker`
