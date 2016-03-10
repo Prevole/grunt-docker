@@ -96,6 +96,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+### 0.0.11
+- Updated package.json to support Grunt >=1.0.0 (from PR #6)
+- Updated package.json and .travis to remove Travis CI build errors/warnings
+
 ### 0.0.10
 - Minor code cleaning. Nothing new.
 
